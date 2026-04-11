@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Automation.HOS.TimelineNavigator.Extensions
 {
-	[ExcludeFromCodeCoverage]
+
 	public static class GenericExtensions
 	{
 		public static T CanSerialize<T>(this T value)

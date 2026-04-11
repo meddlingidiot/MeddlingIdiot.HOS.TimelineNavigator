@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Automation.HOS.TimelineNavigator.DependencyInjection
 {
+    [ExcludeFromCodeCoverage]
     public static class TimelineNavigatorDependencyInjectionExtensions
     {
         public static IServiceCollection AddTimelineNavigator(
