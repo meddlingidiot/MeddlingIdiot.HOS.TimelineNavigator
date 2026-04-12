@@ -1,10 +1,8 @@
-using NUnit.Framework;
 using Automation.HOS.TimelineNavigator.Utilities;
 
-namespace Automation.HOS.TimelineNavigator.UnitTests.Utilities;
+namespace Automation.HOS.TImelineNavigator.UnitTests.Utilities;
 
-[TestFixture]
-public class LoggerShould
+public class LoggerTests
 {
     // ── NullLogger ────────────────────────────────────────────────────────────
 
@@ -12,21 +10,21 @@ public class LoggerShould
     public void NullLogger_InitializeWithCategories_DoesNotThrow()
     {
         var logger = new NullLogger();
-        Assert.DoesNotThrow(() => logger.Initialize(new List<string> { LoggerCategories.All }));
+        logger.Initialize(new List<string> { LoggerCategories.All });
     }
 
     [Test]
     public void NullLogger_Initialize_DoesNotThrow()
     {
         var logger = new NullLogger();
-        Assert.DoesNotThrow(() => logger.Initialize());
+        logger.Initialize();
     }
 
     [Test]
     public void NullLogger_Debug_DoesNotThrow()
     {
         var logger = new NullLogger();
-        Assert.DoesNotThrow(() => logger.Debug(LoggerCategories.General, "msg"));
+        logger.Debug(LoggerCategories.General, "msg");
     }
 
     [Test]
@@ -34,100 +32,99 @@ public class LoggerShould
     {
         var logger = new NullLogger();
         await logger.SaveToFileAsync("ignored.txt");
-        Assert.Pass();
     }
 
     [Test]
-    public void NullLogger_GetResults_ReturnsEmptyString()
+    public async Task NullLogger_GetResults_ReturnsEmptyString()
     {
         var logger = new NullLogger();
-        Assert.That(logger.GetResults(), Is.EqualTo(string.Empty));
+        await Assert.That(logger.GetResults()).IsEqualTo(string.Empty);
     }
 
     // ── InMemoryLogger ────────────────────────────────────────────────────────
 
     [Test]
-    public void InMemoryLogger_GetResults_IsEmptyBeforeAnyDebugCalls()
+    public async Task InMemoryLogger_GetResults_IsEmptyBeforeAnyDebugCalls()
     {
         var logger = new InMemoryLogger();
-        Assert.That(logger.GetResults(), Is.Empty);
+        await Assert.That(logger.GetResults()).IsEqualTo(string.Empty);
     }
 
     [Test]
-    public void InMemoryLogger_Debug_LogsMessage_WhenNoCategoriesSet()
+    public async Task InMemoryLogger_Debug_LogsMessage_WhenNoCategoriesSet()
     {
         var logger = new InMemoryLogger();
         logger.Debug(LoggerCategories.General, "hello");
-        Assert.That(logger.GetResults(), Does.Contain("hello"));
+        await Assert.That(logger.GetResults()).Contains("hello");
     }
 
     [Test]
-    public void InMemoryLogger_Debug_LogsMessage_WhenCategoryMatches()
+    public async Task InMemoryLogger_Debug_LogsMessage_WhenCategoryMatches()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { LoggerCategories.General });
         logger.Debug(LoggerCategories.General, "matched");
-        Assert.That(logger.GetResults(), Does.Contain("matched"));
+        await Assert.That(logger.GetResults()).Contains("matched");
     }
 
     [Test]
-    public void InMemoryLogger_Debug_LogsMessage_WhenAllCategorySet()
+    public async Task InMemoryLogger_Debug_LogsMessage_WhenAllCategorySet()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { LoggerCategories.All });
         logger.Debug(LoggerCategories.Rule, "all-category-msg");
-        Assert.That(logger.GetResults(), Does.Contain("all-category-msg"));
+        await Assert.That(logger.GetResults()).Contains("all-category-msg");
     }
 
     [Test]
-    public void InMemoryLogger_Debug_DoesNotLog_WhenCategoryDoesNotMatch()
+    public async Task InMemoryLogger_Debug_DoesNotLog_WhenCategoryDoesNotMatch()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { LoggerCategories.General });
         logger.Debug(LoggerCategories.Rule, "filtered-out");
-        Assert.That(logger.GetResults(), Does.Not.Contain("filtered-out"));
+        await Assert.That(logger.GetResults()).DoesNotContain("filtered-out");
     }
 
     [Test]
-    public void InMemoryLogger_Debug_TrimsCategory_BeforeMatching()
+    public async Task InMemoryLogger_Debug_TrimsCategory_BeforeMatching()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { $"  {LoggerCategories.General}  " });
         logger.Debug(LoggerCategories.General, "trimmed-match");
-        Assert.That(logger.GetResults(), Does.Contain("trimmed-match"));
+        await Assert.That(logger.GetResults()).Contains("trimmed-match");
     }
 
     [Test]
-    public void InMemoryLogger_Debug_IncludesCategoryAndMessageInLog()
+    public async Task InMemoryLogger_Debug_IncludesCategoryAndMessageInLog()
     {
         var logger = new InMemoryLogger();
         logger.Debug(LoggerCategories.Violations, "violation-detail");
         var result = logger.GetResults();
-        Assert.That(result, Does.Contain(LoggerCategories.Violations));
-        Assert.That(result, Does.Contain("violation-detail"));
+        await Assert.That(result).Contains(LoggerCategories.Violations);
+        await Assert.That(result).Contains("violation-detail");
     }
 
     [Test]
-    public void InMemoryLogger_Initialize_ClearsLog()
+    public async Task InMemoryLogger_Initialize_ClearsLog()
     {
         var logger = new InMemoryLogger();
         logger.Debug(LoggerCategories.General, "before-clear");
         logger.Initialize();
-        Assert.That(logger.GetResults(), Is.Empty);
+        await Assert.That(logger.GetResults()).IsEqualTo(string.Empty);
     }
 
     [Test]
-    public void InMemoryLogger_Initialize_ClearsCategories_SoDefaultIsAllAgain()
+    public async Task InMemoryLogger_Initialize_ClearsCategories_SoDefaultIsAllAgain()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { LoggerCategories.General });
         logger.Initialize(); // clears categories → default is all
         logger.Debug(LoggerCategories.Rule, "after-reset");
-        Assert.That(logger.GetResults(), Does.Contain("after-reset"));
+        await Assert.That(logger.GetResults()).Contains("after-reset");
     }
 
     [Test]
-    public void InMemoryLogger_InitializeWithCategories_ReplacesExistingCategories()
+    public async Task InMemoryLogger_InitializeWithCategories_ReplacesExistingCategories()
     {
         var logger = new InMemoryLogger();
         logger.Initialize(new List<string> { LoggerCategories.General });
@@ -135,16 +132,16 @@ public class LoggerShould
         logger.Debug(LoggerCategories.General, "old-category");
         logger.Debug(LoggerCategories.Rule, "new-category");
         var result = logger.GetResults();
-        Assert.That(result, Does.Not.Contain("old-category"));
-        Assert.That(result, Does.Contain("new-category"));
+        await Assert.That(result).DoesNotContain("old-category");
+        await Assert.That(result).Contains("new-category");
     }
 
     [Test]
-    public void InMemoryLogger_ToString_MatchesGetResults()
+    public async Task InMemoryLogger_ToString_MatchesGetResults()
     {
         var logger = new InMemoryLogger();
         logger.Debug(LoggerCategories.General, "tostring-test");
-        Assert.That(logger.ToString(), Is.EqualTo(logger.GetResults()));
+        await Assert.That(logger.ToString()).IsEqualTo(logger.GetResults());
     }
 
     [Test]
@@ -157,7 +154,7 @@ public class LoggerShould
         {
             await logger.SaveToFileAsync(path);
             var written = await File.ReadAllTextAsync(path);
-            Assert.That(written, Does.Contain("file-content"));
+            await Assert.That(written).Contains("file-content");
         }
         finally
         {

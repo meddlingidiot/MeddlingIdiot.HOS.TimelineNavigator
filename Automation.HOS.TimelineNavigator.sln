@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.HOS.TimelineNavigator", "Automation.HOS.TimelineNavigator\Automation.HOS.TimelineNavigator.csproj", "{6472DDFB-0093-4888-973D-7DD8CB376678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.HOS.TimelineNavigator.UnitTests", "Automation.HOS.TimelineNavigator.UnitTests\Automation.HOS.TimelineNavigator.UnitTests.csproj", "{12DD4A86-F6E4-4B83-9226-281F5BAA58DC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{0B41D0F7-8C4C-4A23-B079-566F5C574F6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.HOS.TImelineNavigator.UnitTests", "Automation.HOS.TImelineNavigator.UnitTests\Automation.HOS.TImelineNavigator.UnitTests.csproj", "{966D9B8C-93EC-41A1-BF25-59D44E866522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,9 +24,9 @@ Global
 		{6472DDFB-0093-4888-973D-7DD8CB376678}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6472DDFB-0093-4888-973D-7DD8CB376678}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6472DDFB-0093-4888-973D-7DD8CB376678}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12DD4A86-F6E4-4B83-9226-281F5BAA58DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12DD4A86-F6E4-4B83-9226-281F5BAA58DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12DD4A86-F6E4-4B83-9226-281F5BAA58DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12DD4A86-F6E4-4B83-9226-281F5BAA58DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966D9B8C-93EC-41A1-BF25-59D44E866522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966D9B8C-93EC-41A1-BF25-59D44E866522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966D9B8C-93EC-41A1-BF25-59D44E866522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966D9B8C-93EC-41A1-BF25-59D44E866522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
