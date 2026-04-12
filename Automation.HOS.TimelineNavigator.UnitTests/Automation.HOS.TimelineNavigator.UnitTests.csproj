@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="TUnit" Version="1.*" />
+    <PackageReference Include="coverlet.collector" Version="8.*" />
   </ItemGroup>
 
   <ItemGroup>
