@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net10.0;net8.0;net9.0</TargetFrameworks>
+    <RootNamespace>MeddlingIdiot.HOS.TimelineNavigator.UnitTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" Version="1.*" />
+    <PackageReference Include="coverlet.collector" Version="8.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MeddlingIdiot.HOS.TimelineNavigator\MeddlingIdiot.HOS.TimelineNavigator.csproj" />
+  </ItemGroup>
+
+</Project>

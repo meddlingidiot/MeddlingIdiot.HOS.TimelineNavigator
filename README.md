@@ -1,13 +1,13 @@
-# Automation.HOS.TimelineNavigator
+# MeddlingIdiot.HOS.TimelineNavigator
 
 A .NET library for navigating multi-dimensional Hours of Service (HOS) timelines for commercial vehicle drivers. It provides bi-directional, timestamp-based navigation across up to ten concurrent event streams — duty status, GPS, engine bus, rest periods, shift extensions, and regulatory exceptions — and exposes a unified state snapshot at any point in time.
 
 ## Solution Structure
 
 ```
-Automation.HOS.TimelineNavigator/
-├── Automation.HOS.TimelineNavigator        # Core library
-└── Automation.HOS.TImelineNavigator.UnitTests  # TUnit test suite
+MeddlingIdiot.HOS.TimelineNavigator/
+├── MeddlingIdiot.HOS.TimelineNavigator        # Core library
+└── MeddlingIdiot.HOS.TimelineNavigator.UnitTests  # TUnit test suite
 ```
 
 ## Target Frameworks
@@ -88,7 +88,7 @@ public interface ITimeline<T> where T : Moment
 Reference the library project directly:
 
 ```xml
-<ProjectReference Include="..\Automation.HOS.TimelineNavigator\Automation.HOS.TimelineNavigator.csproj" />
+<ProjectReference Include="..\MeddlingIdiot.HOS.TimelineNavigator\MeddlingIdiot.HOS.TimelineNavigator.csproj" />
 ```
 
 Register with the DI container:

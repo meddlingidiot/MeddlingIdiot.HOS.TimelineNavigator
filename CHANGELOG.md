@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### 📝 Other Changes
 
+- Update README.md with revised library description, usage examples, and API reference ([59320c1](../../commit/59320c1))
+- Add `coverlet.collector` for code coverage in unit tests ([10bacde](../../commit/10bacde))
 - Delete outdated unit tests from `Automation.HOS.TimelineNavigator.UnitTests`. ([ef512ff](../../commit/ef512ff))
 - Delete outdated unit tests from `Automation.HOS.TimelineNavigator.UnitTests`. ([6e3a03b](../../commit/6e3a03b))
 
