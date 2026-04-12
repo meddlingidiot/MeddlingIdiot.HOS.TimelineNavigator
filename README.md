@@ -2,6 +2,10 @@
 
 A .NET library for navigating multi-dimensional Hours of Service (HOS) timelines for commercial vehicle drivers. It provides bi-directional, timestamp-based navigation across up to ten concurrent event streams — duty status, GPS, engine bus, rest periods, shift extensions, and regulatory exceptions — and exposes a unified state snapshot at any point in time.
 
+## Craftsmanship Note
+
+100% of the production code in this library was hand-written — no vibe coding. The codebase was developed test-first using TDD. I'll admit that AI helped fill in some of the coverage gaps in the test suite, but the implementation itself was not generated.
+
 ## Solution Structure
 
 ```
