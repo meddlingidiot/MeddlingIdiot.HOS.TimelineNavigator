@@ -9,6 +9,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeddlingIdiot.HOS.TimelineNavigator.UnitTests", "MeddlingIdiot.HOS.TimelineNavigator.UnitTests\MeddlingIdiot.HOS.TimelineNavigator.UnitTests.csproj", "{966D9B8C-93EC-41A1-BF25-59D44E866522}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40C24AAE-5CB4-4289-9EEA-52E33F37539E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitleaks.toml = .gitleaks.toml
+		CHANGELOG.md = CHANGELOG.md
+		Directory.Build.props = Directory.Build.props
+		dotnet-tools.json = dotnet-tools.json
+		gitleaks.toml = gitleaks.toml
+		GitVersion.yml = GitVersion.yml
+		LICENSE = LICENSE
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

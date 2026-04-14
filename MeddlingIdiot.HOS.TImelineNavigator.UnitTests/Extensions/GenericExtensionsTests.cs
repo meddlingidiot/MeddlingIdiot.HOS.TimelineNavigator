@@ -235,8 +235,11 @@ public class GenericExtensionsTests
         var original = new int[] { 1, 2, 3 };
         var clone = original.DeepClone();
 
-        await Assert.That(clone).IsNotSameReferenceAs(original);
-        await Assert.That(clone).IsEquivalentTo(original);
+        using (Assert.Multiple())
+        {
+            await Assert.That(clone).IsNotSameReferenceAs(original);
+            await Assert.That(clone).IsEquivalentTo(original);
+        }
     }
 
     [Test]
@@ -245,9 +248,12 @@ public class GenericExtensionsTests
         var original = new SimplePoco { Id = 10, Name = "orig" };
         var clone = original.DeepClone();
 
-        await Assert.That(clone).IsNotSameReferenceAs(original);
-        await Assert.That(clone!.Id).IsEqualTo(10);
-        await Assert.That(clone.Name).IsEqualTo("orig");
+        using (Assert.Multiple())
+        {
+            await Assert.That(clone).IsNotSameReferenceAs(original);
+            await Assert.That(clone!.Id).IsEqualTo(10);
+            await Assert.That(clone.Name).IsEqualTo("orig");
+        }
     }
 
     [Test]

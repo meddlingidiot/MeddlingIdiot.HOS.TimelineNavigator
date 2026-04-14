@@ -20,17 +20,26 @@ public class TimelineTests
         AddSomeMomentsToTimeline(sut);
 
         sut.First();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsFalse();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OffDuty);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsFalse();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OffDuty);
+        }
         sut.Next();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsFalse();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsFalse();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+        }
         sut.Next();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsTrue();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OnDuty);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsTrue();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OnDuty);
+        }
         sut.Next();
     }
 
@@ -42,13 +51,20 @@ public class TimelineTests
 
         sut.First();
         sut.Prior();
-        await Assert.That(sut.IsBeginningOfTime()).IsTrue();
-        await Assert.That(sut.IsEndOfTime()).IsFalse();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Unknown);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsTrue();
+            await Assert.That(sut.IsEndOfTime()).IsFalse();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Unknown);
+        }
+
         sut.Next();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsFalse();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OffDuty);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsFalse();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OffDuty);
+        }
     }
 
     [Test]
@@ -86,13 +102,20 @@ public class TimelineTests
         sut.Next();
         sut.Next();
         sut.Next();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsTrue();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OnDuty);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsTrue();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.OnDuty);
+        }
+
         sut.Prior();
-        await Assert.That(sut.IsBeginningOfTime()).IsFalse();
-        await Assert.That(sut.IsEndOfTime()).IsFalse();
-        await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsBeginningOfTime()).IsFalse();
+            await Assert.That(sut.IsEndOfTime()).IsFalse();
+            await Assert.That(sut.CurrentMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+        }
     }
 
     [Test]

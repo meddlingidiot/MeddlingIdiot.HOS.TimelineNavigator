@@ -35,14 +35,20 @@ public class RestFinderExplorerTests
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         var found = sut.FindRest(TimeSpan.FromHours(4), TimelineDirection.Forward, PreferredEndOfRest.Beginning);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
 
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         found = sut.FindRest(TimeSpan.FromHours(2), TimelineDirection.Forward, PreferredEndOfRest.Beginning);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
     }
 
     [Test]
@@ -55,14 +61,20 @@ public class RestFinderExplorerTests
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         var found = sut.FindRest(TimeSpan.FromHours(4), TimelineDirection.Forward, PreferredEndOfRest.Ending);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
 
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         found = sut.FindRest(TimeSpan.FromHours(2), TimelineDirection.Forward, PreferredEndOfRest.Ending);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 20:00:00"));
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 20:00:00"));
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
     }
 
     [Test]
@@ -75,14 +87,20 @@ public class RestFinderExplorerTests
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         var found = sut.FindRest(TimeSpan.FromHours(4), TimelineDirection.Forward, PreferredEndOfRest.Ending, MoveTo.None);
-        await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 08:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/15/2023 00:00:00"));
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 08:00:00"));
+        }
 
         sut.JumpTo(DateTime.Parse("02/14/2023 09:00:00"));
 
         found = sut.FindRest(TimeSpan.FromHours(2), TimelineDirection.Forward, PreferredEndOfRest.Ending, MoveTo.None);
-        await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 20:00:00"));
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 08:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 20:00:00"));
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 08:00:00"));
+        }
     }
 
     [Test]
@@ -95,14 +113,20 @@ public class RestFinderExplorerTests
         sut.JumpTo(DateTime.Parse("02/14/2023 22:00:00"));
 
         var found = sut.FindRest(TimeSpan.FromHours(4), TimelineDirection.Backward, PreferredEndOfRest.Beginning);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.MinValue);
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.MinValue);
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
 
         sut.JumpTo(DateTime.Parse("02/14/2023 22:00:00"));
 
         found = sut.FindRest(TimeSpan.FromHours(2), TimelineDirection.Backward, PreferredEndOfRest.Beginning);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
-        await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
+            await Assert.That(found.Timestamp).IsEqualTo(sut.Start.Timestamp);
+        }
     }
 
     [Test]
@@ -115,13 +139,19 @@ public class RestFinderExplorerTests
         sut.JumpTo(DateTime.Parse("02/14/2023 22:00:00"));
 
         var found = sut.FindRest(TimeSpan.FromHours(4), TimelineDirection.Backward, PreferredEndOfRest.Ending, MoveTo.None);
-        await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 00:00:00"));
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 21:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 00:00:00"));
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 21:00:00"));
+        }
 
         sut.JumpTo(DateTime.Parse("02/14/2023 22:00:00"));
 
         found = sut.FindRest(TimeSpan.FromHours(2), TimelineDirection.Backward, PreferredEndOfRest.Ending, MoveTo.None);
-        await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 21:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(found.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 18:00:00"));
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/14/2023 21:00:00"));
+        }
     }
 }

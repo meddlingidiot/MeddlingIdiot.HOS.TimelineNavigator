@@ -91,8 +91,11 @@ public class MoveOffRestExplorerTests
         sut.JumpTo(DateTime.Parse("04/14/2023 18:00:00"));
 
         sut.MoveOffRest(TimelineDirection.Forward);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("03/01/2023 00:00:00"));
-        await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("03/01/2023 00:00:00"));
+            await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        }
     }
 
     [Test]
@@ -144,7 +147,10 @@ public class MoveOffRestExplorerTests
         sut.JumpTo(DateTime.Parse("04/14/2023 18:00:00"));
 
         sut.MoveOffRest(TimelineDirection.Forward);
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("03/01/2023 00:00:00"));
-        await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("03/01/2023 00:00:00"));
+            await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        }
     }
 }

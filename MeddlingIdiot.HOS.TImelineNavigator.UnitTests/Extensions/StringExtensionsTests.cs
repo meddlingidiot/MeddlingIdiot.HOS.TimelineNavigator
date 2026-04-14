@@ -10,8 +10,11 @@ public class StringExtensionsTests
     public async Task ToDateTimeOffsetOrNull_ValidString_ReturnsParsedValue()
     {
         var result = "2023-01-27T08:00:00+00:00".ToDateTimeOffsetOrNull();
-        await Assert.That(result).IsNotNull();
-        await Assert.That(result!.Value.Year).IsEqualTo(2023);
+        using (Assert.Multiple())
+        {
+            await Assert.That(result).IsNotNull();
+            await Assert.That(result!.Value.Year).IsEqualTo(2023);
+        }
     }
 
     [Test]
@@ -27,8 +30,11 @@ public class StringExtensionsTests
     public async Task ToDateTimeOrNull_ValidString_ReturnsParsedValue()
     {
         var result = "01/27/2023 08:00:00".ToDateTimeOrNull();
-        await Assert.That(result).IsNotNull();
-        await Assert.That(result!.Value).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(result).IsNotNull();
+            await Assert.That(result!.Value).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+        }
     }
 
     [Test]
@@ -44,8 +50,11 @@ public class StringExtensionsTests
     public async Task ToDoubleOrNull_ValidString_ReturnsParsedValue()
     {
         var result = "3.14".ToDoubleOrNull();
-        await Assert.That(result).IsNotNull();
-        await Assert.That(result!.Value).IsEqualTo(3.14).Within(0.0001);
+        using (Assert.Multiple())
+        {
+            await Assert.That(result).IsNotNull();
+            await Assert.That(result!.Value).IsEqualTo(3.14).Within(0.0001);
+        }
     }
 
     [Test]
@@ -61,8 +70,11 @@ public class StringExtensionsTests
     public async Task ToIntOrNull_ValidString_ReturnsParsedValue()
     {
         var result = "42".ToIntOrNull();
-        await Assert.That(result).IsNotNull();
-        await Assert.That(result!.Value).IsEqualTo(42);
+        using (Assert.Multiple())
+        {
+            await Assert.That(result).IsNotNull();
+            await Assert.That(result!.Value).IsEqualTo(42);
+        }
     }
 
     [Test]

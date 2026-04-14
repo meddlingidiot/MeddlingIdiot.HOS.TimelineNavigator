@@ -46,17 +46,23 @@ public class TimelineNavigatorTests
         sut.Initialize();
 
         sut.JumpTo(DateTime.Parse("01/27/2023 00:30:00"));
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 00:00:00"));
-        await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
-        await Assert.That(sut.Length).IsEqualTo(TimeSpan.FromHours(1));
-        await Assert.That(sut.IsStartOfDay).IsTrue();
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 00:00:00"));
+            await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
+            await Assert.That(sut.Length).IsEqualTo(TimeSpan.FromHours(1));
+            await Assert.That(sut.IsStartOfDay).IsTrue();
+        }
         sut.Next();
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
-        await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
-        await Assert.That(sut.CurrentDutyStatusChangeMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
-        await Assert.That(sut.DutyStatus).IsEqualTo(DutyStatus.Driving);
-        await Assert.That(sut.Length).IsEqualTo(TimeSpan.FromHours(7));
-        await Assert.That(sut.IsStartOfDay).IsFalse();
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
+            await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+            await Assert.That(sut.CurrentDutyStatusChangeMoment.CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+            await Assert.That(sut.DutyStatus).IsEqualTo(DutyStatus.Driving);
+            await Assert.That(sut.Length).IsEqualTo(TimeSpan.FromHours(7));
+            await Assert.That(sut.IsStartOfDay).IsFalse();
+        }
         sut.Next();
         await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
         sut.Next();
@@ -100,9 +106,13 @@ public class TimelineNavigatorTests
         sut.Next();
         await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/11/2023 00:00:00"));
         sut.Next();
-        await Assert.That(sut.IsEndOfTime()).IsTrue();
-        await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/11/2023 00:00:00"));
-        await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.IsEndOfTime()).IsTrue();
+            await Assert.That(sut.Start.Timestamp).IsEqualTo(DateTime.Parse("02/11/2023 00:00:00"));
+            await Assert.That(sut.Finish.Timestamp).IsEqualTo(DateTime.MaxValue);
+        }
+
         sut.Next();
     }
 
@@ -194,17 +204,20 @@ public class TimelineNavigatorTests
             moments.Add(moment);
         }
 
-        await Assert.That(moments.Count).IsEqualTo(23);
-        await Assert.That(moments[0].Timestamp).IsEqualTo(DateTime.MinValue);
-        await Assert.That(moments[1].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 00:00:00"));
-        await Assert.That(moments[2].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
-        await Assert.That(moments[3].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
-        await Assert.That(moments[4].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 22:00:00"));
-        await Assert.That(moments[5].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 23:00:00"));
-        await Assert.That(moments[6].Timestamp).IsEqualTo(DateTime.Parse("01/28/2023 00:00:00"));
-        await Assert.That(moments[7].Timestamp).IsEqualTo(DateTime.Parse("01/28/2023 01:00:00"));
-        await Assert.That(moments[20].Timestamp).IsEqualTo(DateTime.Parse("02/09/2023 00:00:00"));
-        await Assert.That(moments[22].Timestamp).IsEqualTo(DateTime.Parse("02/11/2023 00:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(moments.Count).IsEqualTo(23);
+            await Assert.That(moments[0].Timestamp).IsEqualTo(DateTime.MinValue);
+            await Assert.That(moments[1].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 00:00:00"));
+            await Assert.That(moments[2].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 01:00:00"));
+            await Assert.That(moments[3].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+            await Assert.That(moments[4].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 22:00:00"));
+            await Assert.That(moments[5].Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 23:00:00"));
+            await Assert.That(moments[6].Timestamp).IsEqualTo(DateTime.Parse("01/28/2023 00:00:00"));
+            await Assert.That(moments[7].Timestamp).IsEqualTo(DateTime.Parse("01/28/2023 01:00:00"));
+            await Assert.That(moments[20].Timestamp).IsEqualTo(DateTime.Parse("02/09/2023 00:00:00"));
+            await Assert.That(moments[22].Timestamp).IsEqualTo(DateTime.Parse("02/11/2023 00:00:00"));
+        }
     }
 
     [Test]
@@ -303,9 +316,12 @@ public class TimelineNavigatorTests
             }
         }
 
-        await Assert.That(dutyStatusMoments.Count).IsEqualTo(2);
-        await Assert.That(dutyStatusMoments[0].CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
-        await Assert.That(dutyStatusMoments[1].CurrentDutyStatus).IsEqualTo(DutyStatus.Sleeper);
+        using (Assert.Multiple())
+        {
+            await Assert.That(dutyStatusMoments.Count).IsEqualTo(2);
+            await Assert.That(dutyStatusMoments[0].CurrentDutyStatus).IsEqualTo(DutyStatus.Driving);
+            await Assert.That(dutyStatusMoments[1].CurrentDutyStatus).IsEqualTo(DutyStatus.Sleeper);
+        }
     }
 
     [Test]
@@ -328,8 +344,11 @@ public class TimelineNavigatorTests
         sut.Initialize();
 
         sut.JumpTo(DateTime.MinValue);
-        await Assert.That(sut.CurrentRestMoment.Timestamp).IsEqualTo(DateTime.MinValue);
-        await Assert.That(sut.CurrentRestMoment.Duration).IsEqualTo(TimeSpan.FromHours(10));
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.CurrentRestMoment.Timestamp).IsEqualTo(DateTime.MinValue);
+            await Assert.That(sut.CurrentRestMoment.Duration).IsEqualTo(TimeSpan.FromHours(10));
+        }
     }
 
     [Test]
@@ -381,9 +400,12 @@ public class TimelineNavigatorTests
         sut.Initialize();
 
         sut.JumpTo(DateTime.Parse("01/27/2023 08:00:00"));
-        await Assert.That(sut.Latitude).IsEqualTo(45.5);
-        await Assert.That(sut.Longitude).IsEqualTo(-93.2);
-        await Assert.That(sut.CurrentGpsMoment.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+        using (Assert.Multiple())
+        {
+            await Assert.That(sut.Latitude).IsEqualTo(45.5);
+            await Assert.That(sut.Longitude).IsEqualTo(-93.2);
+            await Assert.That(sut.CurrentGpsMoment.Timestamp).IsEqualTo(DateTime.Parse("01/27/2023 08:00:00"));
+        }
     }
 
     [Test]
