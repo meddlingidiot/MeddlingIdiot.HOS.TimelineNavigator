@@ -1,8 +1,8 @@
 # MeddlingIdiot.HOS.TimelineNavigator
 
-[![Build](https://github.com/meddlingidiot/MeddlingIdiot.Dispatcher/actions/workflows/build.yml/badge.svg)](https://github.com/meddlingidiot/Automation.Nuke.Components/actions/workflows/build.yml)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/meddlingidiot/MeddlingIdiot.Dispatcher)](https://github.com/meddlingidiot/MeddlingIdiot.Dispatcher/releases)
-[![License](https://img.shields.io/github/license/meddlingidiot/MeddlingIdiot.Dispatcher)](LICENSE)
+[![Build](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/actions/workflows/build.yml/badge.svg)](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/actions/workflows/build.yml)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator)](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/releases)
+[![License](https://img.shields.io/github/license/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator)](LICENSE)
 
 A .NET library for navigating multi-dimensional Hours of Service (HOS) timelines for commercial vehicle drivers. It provides bi-directional, timestamp-based navigation across up to ten concurrent event streams — duty status, GPS, engine bus, rest periods, shift extensions, and regulatory exceptions — and exposes a unified state snapshot at any point in time.
 
