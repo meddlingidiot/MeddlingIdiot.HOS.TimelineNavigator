@@ -1,5 +1,7 @@
 # MeddlingIdiot.HOS.TimelineNavigator
 
+[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![C%23](https://img.shields.io/badge/C%23-14.0-239120?logo=csharp&logoColor=white)](https://learn.microsoft.com/dotnet/csharp/)
 [![Build](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/actions/workflows/build.yml/badge.svg)](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/branch/main/graph/badge.svg)](https://codecov.io/gh/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator)](https://github.com/meddlingidiot/MeddlingIdiot.HOS.TimelineNavigator/releases)
