@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            GpsMoment? dest = (GpsMoment?)Activator.CreateInstance(src.GetType());
-            dest = (GpsMoment)PopulateClone(src, dest!);
+            GpsMoment dest = new GpsMoment();
+            dest = (GpsMoment)PopulateClone(src, dest);
             dest.Latitude = src.Latitude;
             dest.Longitude = src.Longitude;
             return dest;

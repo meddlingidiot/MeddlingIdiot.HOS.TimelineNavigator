@@ -26,8 +26,8 @@
         public override object Clone()
         {
             var src = this;
-            EventMoment? dest = (EventMoment?)Activator.CreateInstance(src.GetType());
-            dest = (EventMoment)PopulateClone(src, dest!);
+            EventMoment dest = new EventMoment();
+            dest = (EventMoment)PopulateClone(src, dest);
             dest.EventCode = src.EventCode;
             dest.Comment = src.Comment;
             dest.DriverIdNumber = src.DriverIdNumber;

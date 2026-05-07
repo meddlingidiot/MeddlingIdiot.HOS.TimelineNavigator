@@ -23,8 +23,8 @@
         public override object Clone()
         {
             var src = this;
-            EngineBusMoment? dest = (EngineBusMoment?)Activator.CreateInstance(src.GetType());
-            dest = (EngineBusMoment)PopulateClone(src, dest!);
+            EngineBusMoment dest = new EngineBusMoment();
+            dest = (EngineBusMoment)PopulateClone(src, dest);
             dest.Odometer = src.Odometer;
             return dest;
         }

@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            ShiftExtensionMoment? dest = (ShiftExtensionMoment?)Activator.CreateInstance(src.GetType());
-            dest = (ShiftExtensionMoment)PopulateClone(src, dest!);
+            ShiftExtensionMoment dest = new ShiftExtensionMoment();
+            dest = (ShiftExtensionMoment)PopulateClone(src, dest);
             dest.IsExtended = src.IsExtended;
             return dest;
         }

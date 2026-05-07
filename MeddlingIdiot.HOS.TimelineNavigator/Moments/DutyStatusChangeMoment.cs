@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            DutyStatusChangeMoment? dest = (DutyStatusChangeMoment?)Activator.CreateInstance(src.GetType());
-            dest = (DutyStatusChangeMoment)PopulateClone(src, dest!);
+            DutyStatusChangeMoment dest = new DutyStatusChangeMoment();
+            dest = (DutyStatusChangeMoment)PopulateClone(src, dest);
             dest.CurrentDutyStatus = src.CurrentDutyStatus;
             dest.Comment = src.Comment;
             return dest;

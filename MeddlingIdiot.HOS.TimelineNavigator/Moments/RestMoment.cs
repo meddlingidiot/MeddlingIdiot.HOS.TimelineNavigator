@@ -37,8 +37,8 @@
         public override object Clone()
         {
             var src = this;
-            RestMoment? dest = (RestMoment?)Activator.CreateInstance(src.GetType());
-            dest = (RestMoment)PopulateClone(src, dest!);
+            RestMoment dest = new RestMoment();
+            dest = (RestMoment)PopulateClone(src, dest);
             dest.Duration = src.Duration;
             dest.IsGlobalReset = src.IsGlobalReset;
             dest.IsFullRest = src.IsFullRest;

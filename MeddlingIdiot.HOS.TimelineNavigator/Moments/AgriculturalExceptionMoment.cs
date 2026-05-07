@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            AgriculturalExceptionMoment? dest = (AgriculturalExceptionMoment?)Activator.CreateInstance(src.GetType());
-            dest = (AgriculturalExceptionMoment)PopulateClone(src, dest!);
+            AgriculturalExceptionMoment dest = new AgriculturalExceptionMoment();
+            dest = (AgriculturalExceptionMoment)PopulateClone(src, dest);
             dest.IsEnabled = src.IsEnabled;
             return dest;
         }

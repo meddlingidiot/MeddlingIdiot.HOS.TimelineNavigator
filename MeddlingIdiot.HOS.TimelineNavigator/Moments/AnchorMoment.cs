@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            AnchorMoment? dest = (AnchorMoment?)Activator.CreateInstance(src.GetType());
-            dest = (AnchorMoment)PopulateClone(src, dest!);
+            AnchorMoment dest = new AnchorMoment();
+            dest = (AnchorMoment)PopulateClone(src, dest);
             dest.Comment = src.Comment;
             return dest;
         }

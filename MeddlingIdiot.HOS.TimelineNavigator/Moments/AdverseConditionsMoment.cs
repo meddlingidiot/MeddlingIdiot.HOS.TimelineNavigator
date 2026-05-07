@@ -24,8 +24,8 @@
         public override object Clone()
         {
             var src = this;
-            AdverseConditionsMoment? dest = (AdverseConditionsMoment?)Activator.CreateInstance(src.GetType());
-            dest = (AdverseConditionsMoment)PopulateClone(src, dest!);
+            AdverseConditionsMoment dest = new AdverseConditionsMoment();
+            dest = (AdverseConditionsMoment)PopulateClone(src, dest);
             dest.IsEnabled = src.IsEnabled;
             return dest;
         }

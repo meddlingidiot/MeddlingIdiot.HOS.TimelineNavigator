@@ -15,8 +15,8 @@
         public override object Clone()
         {
             var src = this;
-            StartOfDayMoment? dest = (StartOfDayMoment?)Activator.CreateInstance(src.GetType());
-            dest = (StartOfDayMoment)PopulateClone(src, dest!);
+            StartOfDayMoment dest = new StartOfDayMoment();
+            dest = (StartOfDayMoment)PopulateClone(src, dest);
             return dest;
         }
     }

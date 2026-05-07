@@ -3,7 +3,7 @@
 namespace MeddlingIdiot.HOS.TimelineNavigator.Timelines
 {
     [Serializable]
-    public sealed class Timeline<T> : ITimeline, ITimeline<T> where T : Moment
+    public sealed class Timeline<T> : ITimeline, ITimeline<T> where T : Moment, new()
     {
         private readonly List<T> _momentList;
         private int _currentIndex;
