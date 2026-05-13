@@ -29,7 +29,7 @@ namespace MeddlingIdiot.HOS.TimelineNavigator
         [NonSerialized] private DutyStatusChangeMoment _currentDutyStatusChangeMoment = new DutyStatusChangeMoment();
         [NonSerialized] private GpsMoment _currentGpsMoment = new GpsMoment();
         [NonSerialized] private EngineBusMoment _currentEngineBusMoment = new EngineBusMoment();
-        [NonSerialized] private RestMoment _currentRestMoment = new RestMoment(DateTime.MinValue, TimeSpan.Zero);
+        [NonSerialized] private RestMoment _currentRestMoment = new RestMoment(DateTime.MinValue, DateTime.MinValue, TimeSpan.Zero);
 
         [NonSerialized]
         private ShiftExtensionMoment _currentShiftExtensionMoment = new ShiftExtensionMoment(DateTime.MinValue);
