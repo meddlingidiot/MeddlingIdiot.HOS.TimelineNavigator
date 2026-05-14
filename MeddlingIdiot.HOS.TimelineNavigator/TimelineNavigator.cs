@@ -575,6 +575,22 @@ namespace MeddlingIdiot.HOS.TimelineNavigator
 
         }
 
+        public List<RestMoment> GetRestTimelineMoments()
+        {
+            List<RestMoment> restMoments = new List<RestMoment>();
+            _restTimeline.MoveOnOrBefore(DateTime.MinValue);
+            _restTimeline.Next(); // skip sentinel at DateTime.MinValue
+            while (_restTimeline.CurrentMoment.Timestamp > DateTime.MinValue)
+            {
+                restMoments.Add((RestMoment)_restTimeline.CurrentMoment.Clone());
+                if (_restTimeline.IsEndOfTime())
+                    break;
+                _restTimeline.Next();
+            }
+
+            return restMoments;
+        }
+        
         public IEnumerator<Moment> GetEnumerator()
         {
             Initialize();
