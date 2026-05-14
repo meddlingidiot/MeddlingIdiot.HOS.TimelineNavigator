@@ -3,7 +3,7 @@
     [Serializable]
     public sealed class RestMoment : Moment
     {
-        public DateTime ExactTimestamp { get; private set; }
+        public DateTime? ExactTimestamp { get; private set; }
         public TimeSpan Duration { get; private set; }
         public bool IsGlobalReset { get; private set; }
         public bool IsFullRest { get; private set; }
@@ -14,7 +14,7 @@
         public RestMoment() { }
 
         public RestMoment(DateTime timestamp, 
-            DateTime exactTimestamp,
+            DateTime? exactTimestamp,
             TimeSpan duration,
             bool isGlobalReset = false,
             bool isFullRest = false,
